@@ -1,0 +1,56 @@
+# System
+alias sudo='sudo '  # To be able to use aliases with sudo
+alias pacman='sudo pacman --color auto'
+alias update='paru -Syu --upgrademenu --combinedupgrade --noconfirm && sudo snap refresh && sudo flatpak upgrade -y'
+alias ss="sudo systemctl"
+## reflector
+alias mirror='sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist'
+alias mirrora='sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist'
+alias mirrord='sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist'
+alias mirrors='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist'
+
+
+# utilities
+alias cat="bat"
+alias df='df -hT --exclude=tmpfs --exclude=squashfs --exclude=devtmpfs'
+alias free='free -m'  # Show sizes in MB
+
+alias l="exa"
+alias ls="exa"
+alias ll="exa -l"
+alias la="exa -la"
+
+alias v="$EDITOR"
+alias vi="nvim"
+alias vim="nvim"
+
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+
+## devops
+alias k="kubecolor"
+alias tf="terraform"
+alias tfinit="/usr/bin/cat README.md | grep 'terraform init' | awk -F '\`' '{print \$2}' | bash"
+alias tfplandev="/usr/bin/cat README.md | grep 'terraform plan' | awk -F '\`' '{print \$2}' | bash"
+alias tfplandev2='terraform plan -var-file=develop.tfvars -var-file=encrypted_develop.tfvars'
+
+
+## git
+alias ga='git add .'
+alias gc='git commit'
+alias gcl='git clone'
+alias gitu='git add . && git commit && git push'
+alias gpl='git pull'
+alias gp='git push'
+alias gsb='git status -sb'
+alias gss='git status -s'
+alias gst='git status'
+alias gitdefault='git remote show origin | grep "HEAD branch" | cut -d ":" -f 2 | xargs git checkout'
+alias gitwhatever='git add -u && git commit -m "$(curl http://whatthecommit.com/index.txt)" && git push'
+alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gitcleanup='git branch | grep -v '^*' | xargs git branch -D -'
+alias yadmwhatever='yadm encrypt && yadm add -u && yadm commit -m "$(curl http://whatthecommit.com/index.txt)" && yadm push'
+
+## cd's
+alias cddwm="cd $XDG_DATA_HOME/dwm"
+alias gits="cd $XDG_CACHE_HOME/gits"
+alias triller="cd $XDG_CACHE_HOME/gits/Triller"

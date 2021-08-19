@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/pbl/Downloads/repo.git'
+let g:netrw_dirhist_9='/home/pbl/.local/cache/gits/Triller/SRE-pipelines/Gitlab_CICD'
+let g:netrw_dirhist_8='/home/pbl/.local/cache/gits/Triller/SRE-nexus-3'
+let g:netrw_dirhist_7='/home/pbl/.local/cache/gits/Triller/gitlab-pipeline-libraries/deploy'
+let g:netrw_dirhist_6='/home/pbl/.local/cache/gits/Triller/SRE-nexus-3/.gitlab'
+let g:netrw_dirhist_5='/home/pbl/.local/cache/gits/Triller/SRE-dockerfiles/ansible'
+let g:netrw_dirhist_4='/home/pbl/.local/cache/gits/Triller/SRE-nexus-3'
+let g:netrw_dirhist_3='/home/pbl/.local/cache/gits/Triller/triller-email-service/.git'
+let g:netrw_dirhist_2='/home/pbl/.local/cache/gits/Triller/triller-email-service/docker'
+let g:netrw_dirhist_1='/home/pbl/.local/cache/gits/Triller/User-rpc'

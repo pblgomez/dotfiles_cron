@@ -1,0 +1,108 @@
+# vim: set ft=sxhkdrc:
+
+super + x
+  ~/.local/scripts/shutdown_menu.sh
+
+############################################################
+# Apps
+############################################################
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# program launcher
+# super + @space
+# 	dmenu_run -nf '#D8DEE9' -nb '#2E3440' -sb '#88C0D0' -sf '#2E3440' -fn 'DejaVuSans-10'
+super + d
+  rofi -show run
+#dmenu_run -nf '#D8DEE9' -nb '#2E3440' -sb '#88C0D0' -sf '#2E3440' -fn 'DejaVuSans-10'
+super + shift + d
+  rofi -show ssh
+
+# Terminal emulator
+super + Return
+  alacritty
+ctrl + alt +t
+  alacritty
+
+# Xkill
+super + shift + x
+  xkill
+
+# Vifm
+ctrl + alt + m
+  $TERMINAL -e $FILEBROWSER
+
+# Themes
+super + alt + t
+  ~/.local/bin/change_theme.sh
+
+
+# Joplin 
+ctrl + alt + j
+  $TERMINAL -e joplin
+
+# Browsers
+ctrl + alt + {f,q,b}
+	{firefox,qutebrowser,brave}
+
+# Edit configs
+ctrl + alt + c
+  $HOME/.local/bin/dmenu-edit-configs.sh
+
+
+# Screencast
+ctrl + alt + r
+  $HOME/.local/bin/screencast.sh
+
+Print
+  scrot ~/Downloads/Screenshot_%y-%m-%d_%H:%M:%S.png
+
+shift + Print
+  scrot -s ~/Downloads/Screenshot_%y-%m-%d_%H:%M:%S.png
+
+# clipmenu
+super + alt + c
+  rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# rofi-pass
+super + p
+  rofi-pass
+
+############################################################
+# Especials
+############################################################
+
+# Brightness
+XF86MonBrightnessUp
+  brightnessctl s +10% && notify-send "Brightness: $(brightnessctl i| grep '%')"
+# percent=8; brightnessctl s $((`brightnessctl m`*$percent/100))+ 
+# xbacklight -inc 10
+# light -A 10 && dunstify `light -G | cut -f1 -d '.'` -i "/usr/share/icons/Adwaita/16x16/status/display-brightness-symbolic.symbolic.png" -r 1
+XF86MonBrightnessDown
+  brightnessctl s 10-% && notify-send "Brightness: $(brightnessctl i| grep '%')"
+# percent=8; brightnessctl s $((`brightnessctl m`*$percent/100))-
+# brightnessctl s 600- && notify-send "Brightness: $(brightnessctl i | awk -F'[(|)]' '$2 {print $2}')"
+# xbacklight -dec 10
+# light -U 10 && dunstify `light -G | cut -f1 -d '.'` -i "/usr/share/icons/Adwaita/16x16/status/display-brightness-symbolic.symbolic.png" -r 1
+
+# Audio
+XF86AudioRaiseVolume
+  pactl set-sink-volume @DEFAULT_SINK@ +7%
+# pamixer -u --increase 5 && dunstify -i "/usr/share/icons/Adwaita/16x16/status/audio-volume-high-symbolic.symbolic.png" -r 2 `pamixer --get-volume-human`
+XF86AudioLowerVolume
+  pactl set-sink-volume @DEFAULT_SINK@ -6%
+# pamixer --decrease 5 && dunstify -i "/usr/share/icons/Adwaita/16x16/status/audio-volume-high-symbolic.symbolic.png" -r 2 `pamixer --get-volume-human`
+XF86AudioMute
+  pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#  pactl set-sink-mute @DEFAULT_SINK@ toggle
+# pamixer -t && dunstify -i "/usr/share/icons/Adwaita/16x16/status/audio-volume-high-symbolic.symbolic.png" -r 2 `pamixer --get-volume-human`
+super + shift + p
+  alacritty -e pulsemixer
+
+# Mute microphone
+super + alt + v
+# amixer set Capture toggle
+  pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# amixer set Capture toggle && sleep 1; amixer get Capture | grep '\[off\]' && dunstify -r 34 --timeout=500 "MIC switched OFF" || dunstify -r 34 --timeout=500 "MIC switched ON"

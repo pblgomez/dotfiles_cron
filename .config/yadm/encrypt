@@ -1,0 +1,9 @@
+.config/aws
+.config/git/config
+
+.ssh/config
+
+.mozilla/firefox/profiles.ini
+.config/mozilla/firefox/pbl/extensions/*
+.config/mozilla/firefox/pbl/places.sqlite
+.config/mozilla/firefox/pbl/prefs.js
