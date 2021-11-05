@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-DEVICE=($(xinput list | grep Touchpad | cut -f2 | cut -d "=" -f2))
-echo $DEVICE
-
-DEVICEPROP=$(xinput --list-props $DEVICE | grep "Tapping Enabled (" | awk -F '[()]' '{print $2}')
-echo $DEVICEPROP
-
-xinput set-prop $DEVICE $DEVICEPROP 1
+mapfile -t < <(xinput --list --name-only | grep Touchpad)
+mapfile -t DEVICES < <(xinput --list --name-only | grep Touchpad)
+for i in "${DEVICES[@]}"; do
+  printf "device: %s\n" "$i"
+  mapfile -t DEVICEPROPS < <(xinput --list-props "$i" | awk -F'[()]' '/Tapping Enabled \(/ {print $2}')
+  printf "device property: %s\n" "${DEVICEPROPS[@]}"
+  xinput set-prop "$i" "${DEVICEPROPS[0]}" 1 && printf "Enabled touchpad in device: %s\n\n" "$i"
+done

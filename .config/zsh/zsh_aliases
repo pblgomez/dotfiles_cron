@@ -37,6 +37,8 @@ alias tfplandev2='terraform plan -var-file=develop.tfvars -var-file=encrypted_de
 ## git
 alias ga='git add .'
 alias gc='git commit'
+alias gco='git checkout $(git branch| fzf)'
+alias gcob='git checkout -b'
 alias gcl='git clone'
 alias gitu='git add . && git commit && git push'
 alias gpl='git pull'
