@@ -1,5 +1,5 @@
 .config/aws
-.config/git/config
+.config/git/*
 
 .ssh/config
 
