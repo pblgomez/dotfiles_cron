@@ -9,6 +9,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 xrdb -merge ~/.config/X11/Xresources
 # for compatibility reasons
 export TERM=xterm-256color
