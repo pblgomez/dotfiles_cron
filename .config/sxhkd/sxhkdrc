@@ -14,8 +14,8 @@ super + Escape
 # program launcher
 # super + @space
 # 	dmenu_run -nf '#D8DEE9' -nb '#2E3440' -sb '#88C0D0' -sf '#2E3440' -fn 'DejaVuSans-10'
-super + d
-  rofi -show run
+super + @space
+  PATH=$PATH:~/Applications rofi -show run
 #dmenu_run -nf '#D8DEE9' -nb '#2E3440' -sb '#88C0D0' -sf '#2E3440' -fn 'DejaVuSans-10'
 super + shift + d
   rofi -show ssh
@@ -39,7 +39,7 @@ super + alt + t
   ~/.local/bin/change_theme.sh
 
 
-# Joplin 
+# Joplin
 ctrl + alt + j
   $TERMINAL -e joplin
 
